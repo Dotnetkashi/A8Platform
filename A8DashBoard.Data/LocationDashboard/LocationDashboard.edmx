@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LocationDbAprilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CruisedDiscovery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="CruiseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUIDiscovery" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arrival" Type="nvarchar" MaxLength="50" />
+          <Property Name="Departure" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeDiff" Type="int" />
+        </EntityType>
+        <EntityType Name="Data_1701">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MacAddress" Type="varchar" MaxLength="100" />
+          <Property Name="AreaId" Type="varchar" MaxLength="50" />
+          <Property Name="myDate" Type="date" />
+          <Property Name="myTime" Type="time" Precision="1" />
+          <Property Name="myDateTime" Type="datetime" />
+          <Property Name="Y" Type="varchar" MaxLength="10" />
+          <Property Name="X" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Data_1703">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MacAddress" Type="varchar" MaxLength="100" />
+          <Property Name="AreaId" Type="varchar" MaxLength="50" />
+          <Property Name="myDate" Type="date" />
+          <Property Name="myTime" Type="time" Precision="1" />
+          <Property Name="myDateTime" Type="datetime" />
+          <Property Name="Y" Type="varchar" MaxLength="10" />
+          <Property Name="X" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="DateOfFile" Type="datetime" Nullable="false" />
+          <Property Name="IsInSftp" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InterestLocations">
+          <Key>
+            <PropertyRef Name="AreaOfInterestId" />
+          </Key>
+          <Property Name="AreaOfInterestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LocationIndicators">
+          <Key>
+            <PropertyRef Name="LoctionIndicatorId" />
+          </Key>
+          <Property Name="LoctionIndicatorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaOfInterestId" Type="int" Nullable="false" />
+          <Property Name="LoctionIndicator" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NeighBourAreas">
+          <Key>
+            <PropertyRef Name="NeighbourAreaId" />
+          </Key>
+          <Property Name="NeighbourAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaCode" Type="nvarchar(max)" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId">
+          <End Role="InterestLocations" Type="Self.InterestLocations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LocationIndicators" Type="Self.LocationIndicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestLocations">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Principal>
+            <Dependent Role="LocationIndicators">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId">
+          <End Role="InterestLocations" Type="Self.InterestLocations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NeighBourAreas" Type="Self.NeighBourAreas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestLocations">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Principal>
+            <Dependent Role="NeighBourAreas">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocationDbAprilModelStoreContainer">
+          <EntitySet Name="CruisedDiscovery" EntityType="Self.CruisedDiscovery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_1701" EntityType="Self.Data_1701" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_1703" EntityType="Self.Data_1703" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataFiles" EntityType="Self.DataFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterestLocations" EntityType="Self.InterestLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationIndicators" EntityType="Self.LocationIndicators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NeighBourAreas" EntityType="Self.NeighBourAreas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId" Association="Self.FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId">
+            <End Role="InterestLocations" EntitySet="InterestLocations" />
+            <End Role="LocationIndicators" EntitySet="LocationIndicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId" Association="Self.FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId">
+            <End Role="InterestLocations" EntitySet="InterestLocations" />
+            <End Role="NeighBourAreas" EntitySet="NeighBourAreas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LocationDbAprilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CruisedDiscovery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CruiseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUIDiscovery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arrival" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Departure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeDiff" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Data_1701">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MacAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AreaId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="myDate" Type="DateTime" Precision="0" />
+          <Property Name="myTime" Type="Time" Precision="1" />
+          <Property Name="myDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Y" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Data_1703">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MacAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AreaId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="myDate" Type="DateTime" Precision="0" />
+          <Property Name="myTime" Type="Time" Precision="1" />
+          <Property Name="myDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Y" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="DataFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfFile" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsInSftp" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InterestLocation">
+          <Key>
+            <PropertyRef Name="AreaOfInterestId" />
+          </Key>
+          <Property Name="AreaOfInterestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LocationIndicators" Relationship="Self.FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId" FromRole="InterestLocations" ToRole="LocationIndicators" />
+          <NavigationProperty Name="NeighBourAreas" Relationship="Self.FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId" FromRole="InterestLocations" ToRole="NeighBourAreas" />
+        </EntityType>
+        <EntityType Name="LocationIndicator">
+          <Key>
+            <PropertyRef Name="LoctionIndicatorId" />
+          </Key>
+          <Property Name="LoctionIndicatorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaOfInterestId" Type="Int32" Nullable="false" />
+          <Property Name="LoctionIndicator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InterestLocation" Relationship="Self.FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId" FromRole="LocationIndicators" ToRole="InterestLocations" />
+        </EntityType>
+        <EntityType Name="NeighBourArea">
+          <Key>
+            <PropertyRef Name="NeighbourAreaId" />
+          </Key>
+          <Property Name="NeighbourAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="InterestLocation" Relationship="Self.FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId" FromRole="NeighBourAreas" ToRole="InterestLocations" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId">
+          <End Role="InterestLocations" Type="Self.InterestLocation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LocationIndicators" Type="Self.LocationIndicator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestLocations">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Principal>
+            <Dependent Role="LocationIndicators">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId">
+          <End Role="InterestLocations" Type="Self.InterestLocation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NeighBourAreas" Type="Self.NeighBourArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestLocations">
+              <PropertyRef Name="AreaOfInterestId" />
+            </Principal>
+            <Dependent Role="NeighBourAreas">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocationDbAprilEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CruisedDiscoveries" EntityType="Self.CruisedDiscovery" />
+          <EntitySet Name="Data_1701" EntityType="Self.Data_1701" />
+          <EntitySet Name="Data_1703" EntityType="Self.Data_1703" />
+          <EntitySet Name="DataFiles" EntityType="Self.DataFile" />
+          <EntitySet Name="InterestLocations" EntityType="Self.InterestLocation" />
+          <EntitySet Name="LocationIndicators" EntityType="Self.LocationIndicator" />
+          <EntitySet Name="NeighBourAreas" EntityType="Self.NeighBourArea" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameter" />
+          <AssociationSet Name="FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId" Association="Self.FK_dbo_LocationIndicators_dbo_InterestLocations_AreaOfInterestId">
+            <End Role="InterestLocations" EntitySet="InterestLocations" />
+            <End Role="LocationIndicators" EntitySet="LocationIndicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId" Association="Self.FK_dbo_NeighBourAreas_dbo_InterestLocations_AreaId">
+            <End Role="InterestLocations" EntitySet="InterestLocations" />
+            <End Role="NeighBourAreas" EntitySet="NeighBourAreas" />
+          </AssociationSet>
+          </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LocationDbAprilModelStoreContainer" CdmEntityContainer="LocationDbAprilEntities">
+          <EntitySetMapping Name="CruisedDiscoveries">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.CruisedDiscovery">
+              <MappingFragment StoreEntitySet="CruisedDiscovery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CruiseName" ColumnName="CruiseName" />
+                <ScalarProperty Name="TUIDiscovery" ColumnName="TUIDiscovery" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="TimeDiff" ColumnName="TimeDiff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_1701">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.Data_1701">
+              <MappingFragment StoreEntitySet="Data_1701">
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="myDate" ColumnName="myDate" />
+                <ScalarProperty Name="myTime" ColumnName="myTime" />
+                <ScalarProperty Name="myDateTime" ColumnName="myDateTime" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_1703">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.Data_1703">
+              <MappingFragment StoreEntitySet="Data_1703">
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="myDate" ColumnName="myDate" />
+                <ScalarProperty Name="myTime" ColumnName="myTime" />
+                <ScalarProperty Name="myDateTime" ColumnName="myDateTime" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataFiles">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.DataFile">
+              <MappingFragment StoreEntitySet="DataFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="DateOfFile" ColumnName="DateOfFile" />
+                <ScalarProperty Name="IsInSftp" ColumnName="IsInSftp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterestLocations">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.InterestLocation">
+              <MappingFragment StoreEntitySet="InterestLocations">
+                <ScalarProperty Name="AreaOfInterestId" ColumnName="AreaOfInterestId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationIndicators">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.LocationIndicator">
+              <MappingFragment StoreEntitySet="LocationIndicators">
+                <ScalarProperty Name="LoctionIndicatorId" ColumnName="LoctionIndicatorId" />
+                <ScalarProperty Name="AreaOfInterestId" ColumnName="AreaOfInterestId" />
+                <ScalarProperty Name="LoctionIndicator" ColumnName="LoctionIndicator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeighBourAreas">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.NeighBourArea">
+              <MappingFragment StoreEntitySet="NeighBourAreas">
+                <ScalarProperty Name="NeighbourAreaId" ColumnName="NeighbourAreaId" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters">
+            <EntityTypeMapping TypeName="LocationDbAprilModel.Parameter">
+              <MappingFragment StoreEntitySet="Parameters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,1230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminSiteAccesses">
+          <Key>
+            <PropertyRef Name="AdminSiteAccessId" />
+          </Key>
+          <Property Name="AdminSiteAccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Ages">
+          <Key>
+            <PropertyRef Name="AgeId" />
+          </Key>
+          <Property Name="AgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApiAccessUserSessions">
+          <Key>
+            <PropertyRef Name="UserSessionId" />
+          </Key>
+          <Property Name="UserSessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SessionId" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="300" />
+          <Property Name="OrganisationId" Type="int" />
+        </EntityType>
+        <EntityType Name="FormControls">
+          <Key>
+            <PropertyRef Name="FormControlId" />
+          </Key>
+          <Property Name="FormControlId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormId" Type="int" Nullable="false" />
+          <Property Name="LabelName" Type="nvarchar" MaxLength="500" />
+          <Property Name="LabelNameToDisplay" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsMandetory" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="FormId" />
+          </Key>
+          <Property Name="FormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="BannerIcon" Type="nvarchar(max)" />
+          <Property Name="BackGroundColor" Type="nvarchar" MaxLength="100" />
+          <Property Name="LoginWindowColor" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsPasswordRequire" Type="bit" Nullable="false" />
+          <Property Name="LoginPageTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="RegistrationPageTitle" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MacAddresses">
+          <Key>
+            <PropertyRef Name="MacId" />
+          </Key>
+          <Property Name="MacId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MacAddressValue" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BrowserName" Type="nvarchar" MaxLength="500" />
+          <Property Name="OperatingSystem" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsMobile" Type="bit" Nullable="false" />
+          <Property Name="UserAgentName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsRegisterInRtls" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManagePromotions">
+          <Key>
+            <PropertyRef Name="ManagePromotionId" />
+          </Key>
+          <Property Name="ManagePromotionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="SuccessPageOption" Type="nvarchar(max)" />
+          <Property Name="WebPageURL" Type="nvarchar(max)" />
+          <Property Name="OptionalPictureForSuccessPage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Organisations">
+          <Key>
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="OrganisationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganisationName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sites">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="300" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="AutoLogin" Type="bit" />
+          <Property Name="ControllerIpAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="MySqlIpAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Term_conditions" Type="nvarchar" MaxLength="500" />
+          <Property Name="TermsAndCondDoc" Type="nvarchar" MaxLength="500" />
+          <Property Name="RtlsUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="DashboardUrl" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="150" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="MobileNumer" Type="int" />
+          <Property Name="GenderId" Type="int" />
+          <Property Name="AgeId" Type="int" />
+          <Property Name="SiteId" Type="int" />
+          <Property Name="promotional_email" Type="bit" />
+          <Property Name="ThirdPartyOptIn" Type="bit" />
+          <Property Name="UserOfDataOptIn" Type="bit" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="AutoLogin" Type="bit" />
+          <Property Name="Custom1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Custom2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Custom3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Custom4" Type="nvarchar" MaxLength="500" />
+          <Property Name="Custom5" Type="nvarchar" MaxLength="500" />
+          <Property Name="Custom6" Type="nvarchar" MaxLength="500" />
+          <Property Name="UniqueUserId" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UsersAddresses">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="200" />
+          <Property Name="PostTown" Type="nvarchar" MaxLength="200" />
+          <Property Name="County" Type="nvarchar" MaxLength="200" />
+          <Property Name="State" Type="nvarchar" MaxLength="200" />
+          <Property Name="Country" Type="nvarchar" MaxLength="200" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AdminSiteAccesses" Type="Self.AdminSiteAccesses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminSiteAccesses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApiAccessUserSessions" Type="Self.ApiAccessUserSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApiAccessUserSessions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserClaims" Type="Self.UserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Ages_AgeId">
+          <End Role="Ages" Type="Self.Ages" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ages">
+              <PropertyRef Name="AgeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="AgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Genders_GenderId">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Sites" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Companies_dbo_Organisations_OrganisationId">
+          <End Role="Organisations" Type="Self.Organisations" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisations">
+              <PropertyRef Name="OrganisationId" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormControls_dbo_Forms_FormId">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormControls" Type="Self.FormControls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormId" />
+            </Principal>
+            <Dependent Role="FormControls">
+              <PropertyRef Name="FormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Forms_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MacAddresses_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MacAddresses" Type="Self.MacAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MacAddresses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ManagePromotions_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ManagePromotions" Type="Self.ManagePromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="ManagePromotions">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sites_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Sites" Type="Self.Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Sites">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsersAddresses_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersAddresses" Type="Self.UsersAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersAddresses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AdminSiteAccesses" EntityType="Self.AdminSiteAccesses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ages" EntityType="Self.Ages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApiAccessUserSessions" EntityType="Self.ApiAccessUserSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormControls" EntityType="Self.FormControls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MacAddresses" EntityType="Self.MacAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagePromotions" EntityType="Self.ManagePromotions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organisations" EntityType="Self.Organisations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sites" EntityType="Self.Sites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersAddresses" EntityType="Self.UsersAddresses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AdminSiteAccesses" EntitySet="AdminSiteAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ApiAccessUserSessions" EntitySet="ApiAccessUserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserClaims" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Ages_AgeId" Association="Self.FK_dbo_AspNetUsers_dbo_Ages_AgeId">
+            <End Role="Ages" EntitySet="Ages" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Genders_GenderId" Association="Self.FK_dbo_AspNetUsers_dbo_Genders_GenderId">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Sites_SiteId" Association="Self.FK_dbo_AspNetUsers_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Companies_dbo_Organisations_OrganisationId" Association="Self.FK_dbo_Companies_dbo_Organisations_OrganisationId">
+            <End Role="Organisations" EntitySet="Organisations" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormControls_dbo_Forms_FormId" Association="Self.FK_dbo_FormControls_dbo_Forms_FormId">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormControls" EntitySet="FormControls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Forms_dbo_Sites_SiteId" Association="Self.FK_dbo_Forms_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MacAddresses_dbo_Users_UserId" Association="Self.FK_dbo_MacAddresses_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MacAddresses" EntitySet="MacAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ManagePromotions_dbo_Sites_SiteId" Association="Self.FK_dbo_ManagePromotions_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="ManagePromotions" EntitySet="ManagePromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sites_dbo_Companies_CompanyId" Association="Self.FK_dbo_Sites_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Sites" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsersAddresses_dbo_Users_UserId" Association="Self.FK_dbo_UsersAddresses_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersAddresses" EntitySet="UsersAddresses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminSiteAccess">
+          <Key>
+            <PropertyRef Name="AdminSiteAccessId" />
+          </Key>
+          <Property Name="AdminSiteAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="SiteName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId" FromRole="AdminSiteAccesses" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Age">
+          <Key>
+            <PropertyRef Name="AgeId" />
+          </Key>
+          <Property Name="AgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_AspNetUsers_dbo_Ages_AgeId" FromRole="Ages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ApiAccessUserSession">
+          <Key>
+            <PropertyRef Name="UserSessionId" />
+          </Key>
+          <Property Name="UserSessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SessionId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId" FromRole="ApiAccessUserSessions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OrganisationId" Type="Int32" />
+          <NavigationProperty Name="Organisation" Relationship="Self.FK_dbo_Companies_dbo_Organisations_OrganisationId" FromRole="Companies" ToRole="Organisations" />
+          <NavigationProperty Name="Sites" Relationship="Self.FK_dbo_Sites_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Sites" />
+        </EntityType>
+        <EntityType Name="FormControl">
+          <Key>
+            <PropertyRef Name="FormControlId" />
+          </Key>
+          <Property Name="FormControlId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormId" Type="Int32" Nullable="false" />
+          <Property Name="LabelName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LabelNameToDisplay" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsMandetory" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Form" Relationship="Self.FK_dbo_FormControls_dbo_Forms_FormId" FromRole="FormControls" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="FormId" />
+          </Key>
+          <Property Name="FormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="BannerIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackGroundColor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LoginWindowColor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsPasswordRequire" Type="Boolean" Nullable="false" />
+          <Property Name="LoginPageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationPageTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FormControls" Relationship="Self.FK_dbo_FormControls_dbo_Forms_FormId" FromRole="Forms" ToRole="FormControls" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_dbo_Forms_dbo_Sites_SiteId" FromRole="Forms" ToRole="Sites" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_AspNetUsers_dbo_Genders_GenderId" FromRole="Genders" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="MacAddress">
+          <Key>
+            <PropertyRef Name="MacId" />
+          </Key>
+          <Property Name="MacId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MacAddressValue" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BrowserName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsMobile" Type="Boolean" Nullable="false" />
+          <Property Name="UserAgentName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsRegisterInRtls" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_MacAddresses_dbo_Users_UserId" FromRole="MacAddresses" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ManagePromotion">
+          <Key>
+            <PropertyRef Name="ManagePromotionId" />
+          </Key>
+          <Property Name="ManagePromotionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="SuccessPageOption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebPageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OptionalPictureForSuccessPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_dbo_ManagePromotions_dbo_Sites_SiteId" FromRole="ManagePromotions" ToRole="Sites" />
+        </EntityType>
+        <EntityType Name="Organisation">
+          <Key>
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="OrganisationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganisationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Companies_dbo_Organisations_OrganisationId" FromRole="Organisations" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.UserRoles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="AutoLogin" Type="Boolean" />
+          <Property Name="ControllerIpAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MySqlIpAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Term_conditions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TermsAndCondDoc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RtlsUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DashboardUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_dbo_Sites_dbo_Companies_CompanyId" FromRole="Sites" ToRole="Companies" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_dbo_Forms_dbo_Sites_SiteId" FromRole="Sites" ToRole="Forms" />
+          <NavigationProperty Name="ManagePromotions" Relationship="Self.FK_dbo_ManagePromotions_dbo_Sites_SiteId" FromRole="Sites" ToRole="ManagePromotions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_AspNetUsers_dbo_Sites_SiteId" FromRole="Sites" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="UserClaims" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="UserLogins" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MobileNumer" Type="Int32" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="AgeId" Type="Int32" />
+          <Property Name="SiteId" Type="Int32" />
+          <Property Name="promotional_email" Type="Boolean" />
+          <Property Name="ThirdPartyOptIn" Type="Boolean" />
+          <Property Name="UserOfDataOptIn" Type="Boolean" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AutoLogin" Type="Boolean" />
+          <Property Name="Custom1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Custom2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Custom3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Custom4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Custom5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Custom6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminSiteAccesses" Relationship="Self.FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId" FromRole="Users" ToRole="AdminSiteAccesses" />
+          <NavigationProperty Name="Age" Relationship="Self.FK_dbo_AspNetUsers_dbo_Ages_AgeId" FromRole="Users" ToRole="Ages" />
+          <NavigationProperty Name="ApiAccessUserSessions" Relationship="Self.FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId" FromRole="Users" ToRole="ApiAccessUserSessions" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_dbo_AspNetUsers_dbo_Genders_GenderId" FromRole="Users" ToRole="Genders" />
+          <NavigationProperty Name="MacAddresses" Relationship="Self.FK_dbo_MacAddresses_dbo_Users_UserId" FromRole="Users" ToRole="MacAddresses" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_dbo_AspNetUsers_dbo_Sites_SiteId" FromRole="Users" ToRole="Sites" />
+          <NavigationProperty Name="UserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="Users" ToRole="UserClaims" />
+          <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="Users" ToRole="UserLogins" />
+          <NavigationProperty Name="UsersAddresses" Relationship="Self.FK_dbo_UsersAddresses_dbo_Users_UserId" FromRole="Users" ToRole="UsersAddresses" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="UsersAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PostTown" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_UsersAddresses_dbo_Users_UserId" FromRole="UsersAddresses" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AdminSiteAccesses" Type="Self.AdminSiteAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminSiteAccesses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Ages_AgeId">
+          <End Role="Ages" Type="Self.Age" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ages">
+              <PropertyRef Name="AgeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="AgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApiAccessUserSessions" Type="Self.ApiAccessUserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApiAccessUserSessions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Companies_dbo_Organisations_OrganisationId">
+          <End Role="Organisations" Type="Self.Organisation" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisations">
+              <PropertyRef Name="OrganisationId" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sites_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Sites" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Sites">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormControls_dbo_Forms_FormId">
+          <End Role="Forms" Type="Self.Form" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormControls" Type="Self.FormControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormId" />
+            </Principal>
+            <Dependent Role="FormControls">
+              <PropertyRef Name="FormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Forms_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Site" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Genders_GenderId">
+          <End Role="Genders" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MacAddresses_dbo_Users_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MacAddresses" Type="Self.MacAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MacAddresses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ManagePromotions_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Site" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ManagePromotions" Type="Self.ManagePromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="ManagePromotions">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Sites_SiteId">
+          <End Role="Sites" Type="Self.Site" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserClaims" Type="Self.UserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsersAddresses_dbo_Users_UserId">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersAddresses" Type="Self.UsersAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersAddresses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRoles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="A8ProdcutEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminSiteAccesses" EntityType="Self.AdminSiteAccess" />
+          <EntitySet Name="Ages" EntityType="Self.Age" />
+          <EntitySet Name="ApiAccessUserSessions" EntityType="Self.ApiAccessUserSession" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="FormControls" EntityType="Self.FormControl" />
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="MacAddresses" EntityType="Self.MacAddress" />
+          <EntitySet Name="ManagePromotions" EntityType="Self.ManagePromotion" />
+          <EntitySet Name="Organisations" EntityType="Self.Organisation" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Sites" EntityType="Self.Site" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaim" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersAddresses" EntityType="Self.UsersAddress" />
+          <AssociationSet Name="FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AdminSiteAccesses_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AdminSiteAccesses" EntitySet="AdminSiteAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Ages_AgeId" Association="Self.FK_dbo_AspNetUsers_dbo_Ages_AgeId">
+            <End Role="Ages" EntitySet="Ages" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_ApiAccessUserSessions_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ApiAccessUserSessions" EntitySet="ApiAccessUserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Companies_dbo_Organisations_OrganisationId" Association="Self.FK_dbo_Companies_dbo_Organisations_OrganisationId">
+            <End Role="Organisations" EntitySet="Organisations" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sites_dbo_Companies_CompanyId" Association="Self.FK_dbo_Sites_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Sites" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormControls_dbo_Forms_FormId" Association="Self.FK_dbo_FormControls_dbo_Forms_FormId">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormControls" EntitySet="FormControls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Forms_dbo_Sites_SiteId" Association="Self.FK_dbo_Forms_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Genders_GenderId" Association="Self.FK_dbo_AspNetUsers_dbo_Genders_GenderId">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MacAddresses_dbo_Users_UserId" Association="Self.FK_dbo_MacAddresses_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MacAddresses" EntitySet="MacAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ManagePromotions_dbo_Sites_SiteId" Association="Self.FK_dbo_ManagePromotions_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="ManagePromotions" EntitySet="ManagePromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Sites_SiteId" Association="Self.FK_dbo_AspNetUsers_dbo_Sites_SiteId">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserClaims" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsersAddresses_dbo_Users_UserId" Association="Self.FK_dbo_UsersAddresses_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersAddresses" EntitySet="UsersAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="A8ProdcutEntities">
+          <EntitySetMapping Name="AdminSiteAccesses">
+            <EntityTypeMapping TypeName="Model.AdminSiteAccess">
+              <MappingFragment StoreEntitySet="AdminSiteAccesses">
+                <ScalarProperty Name="AdminSiteAccessId" ColumnName="AdminSiteAccessId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ages">
+            <EntityTypeMapping TypeName="Model.Age">
+              <MappingFragment StoreEntitySet="Ages">
+                <ScalarProperty Name="AgeId" ColumnName="AgeId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiAccessUserSessions">
+            <EntityTypeMapping TypeName="Model.ApiAccessUserSession">
+              <MappingFragment StoreEntitySet="ApiAccessUserSessions">
+                <ScalarProperty Name="UserSessionId" ColumnName="UserSessionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="Model.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormControls">
+            <EntityTypeMapping TypeName="Model.FormControl">
+              <MappingFragment StoreEntitySet="FormControls">
+                <ScalarProperty Name="FormControlId" ColumnName="FormControlId" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="LabelName" ColumnName="LabelName" />
+                <ScalarProperty Name="LabelNameToDisplay" ColumnName="LabelNameToDisplay" />
+                <ScalarProperty Name="IsMandetory" ColumnName="IsMandetory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="Model.Form">
+              <MappingFragment StoreEntitySet="Forms">
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="BannerIcon" ColumnName="BannerIcon" />
+                <ScalarProperty Name="BackGroundColor" ColumnName="BackGroundColor" />
+                <ScalarProperty Name="LoginWindowColor" ColumnName="LoginWindowColor" />
+                <ScalarProperty Name="IsPasswordRequire" ColumnName="IsPasswordRequire" />
+                <ScalarProperty Name="LoginPageTitle" ColumnName="LoginPageTitle" />
+                <ScalarProperty Name="RegistrationPageTitle" ColumnName="RegistrationPageTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="Model.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MacAddresses">
+            <EntityTypeMapping TypeName="Model.MacAddress">
+              <MappingFragment StoreEntitySet="MacAddresses">
+                <ScalarProperty Name="MacId" ColumnName="MacId" />
+                <ScalarProperty Name="MacAddressValue" ColumnName="MacAddressValue" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BrowserName" ColumnName="BrowserName" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+                <ScalarProperty Name="UserAgentName" ColumnName="UserAgentName" />
+                <ScalarProperty Name="IsRegisterInRtls" ColumnName="IsRegisterInRtls" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagePromotions">
+            <EntityTypeMapping TypeName="Model.ManagePromotion">
+              <MappingFragment StoreEntitySet="ManagePromotions">
+                <ScalarProperty Name="ManagePromotionId" ColumnName="ManagePromotionId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SuccessPageOption" ColumnName="SuccessPageOption" />
+                <ScalarProperty Name="WebPageURL" ColumnName="WebPageURL" />
+                <ScalarProperty Name="OptionalPictureForSuccessPage" ColumnName="OptionalPictureForSuccessPage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organisations">
+            <EntityTypeMapping TypeName="Model.Organisation">
+              <MappingFragment StoreEntitySet="Organisations">
+                <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+                <ScalarProperty Name="OrganisationName" ColumnName="OrganisationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="Model.Site">
+              <MappingFragment StoreEntitySet="Sites">
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="AutoLogin" ColumnName="AutoLogin" />
+                <ScalarProperty Name="ControllerIpAddress" ColumnName="ControllerIpAddress" />
+                <ScalarProperty Name="MySqlIpAddress" ColumnName="MySqlIpAddress" />
+                <ScalarProperty Name="Term_conditions" ColumnName="Term_conditions" />
+                <ScalarProperty Name="TermsAndCondDoc" ColumnName="TermsAndCondDoc" />
+                <ScalarProperty Name="RtlsUrl" ColumnName="RtlsUrl" />
+                <ScalarProperty Name="DashboardUrl" ColumnName="DashboardUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserClaims">
+            <EntityTypeMapping TypeName="Model.UserClaim">
+              <MappingFragment StoreEntitySet="UserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="Model.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MobileNumer" ColumnName="MobileNumer" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="AgeId" ColumnName="AgeId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="promotional_email" ColumnName="promotional_email" />
+                <ScalarProperty Name="ThirdPartyOptIn" ColumnName="ThirdPartyOptIn" />
+                <ScalarProperty Name="UserOfDataOptIn" ColumnName="UserOfDataOptIn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AutoLogin" ColumnName="AutoLogin" />
+                <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+                <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+                <ScalarProperty Name="Custom3" ColumnName="Custom3" />
+                <ScalarProperty Name="Custom4" ColumnName="Custom4" />
+                <ScalarProperty Name="Custom5" ColumnName="Custom5" />
+                <ScalarProperty Name="Custom6" ColumnName="Custom6" />
+                <ScalarProperty Name="UniqueUserId" ColumnName="UniqueUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersAddresses">
+            <EntityTypeMapping TypeName="Model.UsersAddress">
+              <MappingFragment StoreEntitySet="UsersAddresses">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="PostTown" ColumnName="PostTown" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRoles" TypeName="Model.UserRoles" StoreEntitySet="UserRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

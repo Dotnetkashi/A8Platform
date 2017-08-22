@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs/config
+/packages
+/.vs/A8DashBoard.Web/v14
+/A8DashBoard.Business/bin/Debug
+/A8DashBoard.Business/obj/Debug
+/A8DashBoard.Data/obj/Debug
+/A8Dashboard.Models/bin/Debug
+/A8Dashboard.Models/obj/Debug
+/A8DashBoard.Service/obj/Debug
+/A8DashBoard.Web/obj/Debug
+/A8DashBoard.Web/bin
